@@ -126,18 +126,36 @@ export default {
     MobileStoreBanner,
     LazyHydrate
   },
-  setup() {
-    const { content: promoBanners, search } = useContent();
+   setup() {
+    const { search, content, loading, error } = useContent();
     onSSR(async () => {
       await search({
-        type: 'collection',
-        contentType: 'promoBanner',
+          type: 'collection',
+        contentType: 'contentPage',
         params: {
-          include: 'backgroundImage'
+           filter: {
+            slug: { _eq: 'homepage' }
+          },
+                  page: {
+            limit: 1,
+            sections: {
+              limit: 5,
+              bannerItems: {
+                limit: 5
+              },
+              featuredCategories: {
+                limit: 4
+              }
+            }
+          },
+          include: 'sections,' + // Content Page Sections
+                   'sections.bannerItems,sections.bannerItems.backgroundImage,' + // Promo Banner Items
+                   //'sections.featuredCategories,sections.featuredCategories.backgroundImage,' + // Featured Categories
+                   'sections.backgroundImage', // Newsletter Signup
         }
       });
     });
-    return { promoBanners }
+    return { content }
   },
   data() {
     return {
