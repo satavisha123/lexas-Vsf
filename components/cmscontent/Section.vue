@@ -5,10 +5,10 @@
 <script>
 //import BestSellers from './Section/BestSellers';
 import FeaturedCategories from './Section/FeaturedCategories';
-//import InstagramGallery from './Section/InstagramGallery';
+import InstagramGallery from './Section/InstagramGallery';
 import NewsletterSignup from './Section/NewsletterSignup';
 import PromoBanner from './Section/PromoBanner';
-import NewProb from './section/NewProb.vue'
+//import NewProb from './section/NewProb.vue'
 export default {
   components: {
     // bestSellers: BestSellers,
