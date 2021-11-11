@@ -2,91 +2,7 @@
    
 <template>
   <div id="home">
-    <SfHero class="hero">
-      <SfHeroItem
-        v-for="promoBanner in promoBanners"
-        :key="promoBanner.id"
-        :title="promoBanner.heading"
-        :subtitle="promoBanner.subHeading"
-        :button-text="promoBanner.buttonText"
-        :image="promoBanner.backgroundImage.url"
-      />
-    </SfHero>
-
-    <LazyHydrate when-visible>
-      <SfBannerGrid :banner-grid="1" class="banner-grid">
-        <template v-for="item in banners" v-slot:[item.slot]>
-          <SfBanner
-            :key="item.slot"
-            :title="item.title"
-            :subtitle="item.subtitle"
-            :description="item.description"
-            :button-text="item.buttonText"
-            :image="item.image"
-            :class="item.class"
-          />
-        </template>
-      </SfBannerGrid>
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <div class="similar-products">
-        <SfHeading title="Match with it" :level="3"/>
-        <nuxt-link :to="localePath('/c/women')" class="smartphone-only">See all</nuxt-link>
-      </div>
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-        <SfCarousel class="carousel" :settings="{ peek: 16, breakpoints: { 1023: { peek: 0, perView: 2 } } }">
-          <template #prev="{go}">
-            <SfArrow
-              aria-label="prev"
-              class="sf-arrow--left sf-arrow--long"
-              @click="go('prev')"
-            />
-          </template>
-          <template #next="{go}">
-            <SfArrow
-              aria-label="next"
-              class="sf-arrow--right sf-arrow--long"
-              @click="go('next')"
-            />
-          </template>
-          <SfCarouselItem class="carousel__item" v-for="(product, i) in products" :key="i">
-            <SfProductCard
-              data-cy="home-url_product"
-              :title="product.title"
-              :image="product.image"
-              :regular-price="product.price.regular"
-              :max-rating="product.rating.max"
-              :score-rating="product.rating.score"
-              :show-add-to-cart-button="true"
-              :is-on-wishlist="product.isInWishlist"
-              link="/"
-              class="carousel__item__product"
-              @click:wishlist="toggleWishlist(i)"
-            />
-          </SfCarouselItem>
-        </SfCarousel>
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <SfCallToAction
-        title="Subscribe to Newsletters"
-        button-text="Subscribe"
-        description="Be aware of upcoming sales and events. Receive gifts and special offers!"
-        image="/homepage/newsletter.webp"
-        class="call-to-action"
-      />
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <InstagramFeed />
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <MobileStoreBanner/>
-    </LazyHydrate>
+    <ContentPage v-if="content[0]" :page="content[0]" />
   </div>
 </template>
 <script>
@@ -101,13 +17,15 @@ import {
   SfBannerGrid,
   SfHeading,
   SfArrow,
-  SfButton
+  SfButton,
+  SfCard
 } from '@storefront-ui/vue';
 import InstagramFeed from '~/components/InstagramFeed.vue';
 import MobileStoreBanner from '~/components/MobileStoreBanner.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import { onSSR } from '@vue-storefront/core';
 import { useContent } from 'vsf-lexascms';
+import ContentPage from '~/components/ContentPage.vue';
 export default {
   name: 'Home',
   components: {
@@ -124,9 +42,11 @@ export default {
     SfArrow,
     SfButton,
     MobileStoreBanner,
-    LazyHydrate
+    LazyHydrate,
+    ContentPage,
+    SfCard
   },
-   setup() {
+  setup() {
     const { search, content, loading, error } = useContent();
     onSSR(async () => {
       await search({
@@ -139,24 +59,43 @@ export default {
                   page: {
             limit: 1,
             sections: {
-              limit: 5,
+              limit: 10,
               bannerItems: {
                 limit: 5
               },
+           
+
+
+
               featuredCategories: {
                 limit: 4
               }
             }
           },
-          include: 'sections,' + // Content Page Sections
+          include: 'sections,' +
+                   //'sections.backgroundImage'+ // Content Page Sections
                    'sections.bannerItems,sections.bannerItems.backgroundImage,' + // Promo Banner Items
-                   //'sections.featuredCategories,sections.featuredCategories.backgroundImage,' + // Featured Categories
+                   'sections.featuredCategories,sections.featuredCategories.backgroundImage,' + // Featured Categories
                    'sections.backgroundImage', // Newsletter Signup
         }
       });
     });
     return { content }
   },
+
+  //  setup() {
+  //   const { content: promoBanners, search } = useContent();
+  //   onSSR(async () => {
+  //     await search({
+  //       type: 'collection',
+  //       contentType: 'promoBanner',
+  //       params: {
+  //         include: 'backgroundImage'
+  //       }
+  //     });
+  //   });
+  //   return { promoBanners }
+  // },
   data() {
     return {
       heroes: [
