@@ -5,16 +5,16 @@
 <script>
 //import BestSellers from './Section/BestSellers';
 import FeaturedCategories from './Section/FeaturedCategories';
-import InstagramGallery from './Section/InstagramGallery';
+import CallToAction from './Section/CallToAction';
 import NewsletterSignup from './Section/NewsletterSignup';
 import PromoBanner from './Section/PromoBanner';
-//import NewProb from './section/NewProb.vue'
+//import NewProb from './Section/NewProb';
 export default {
   components: {
     // bestSellers: BestSellers,
      featuredCategories: FeaturedCategories,
-      newProb : NewProb,
-    // instagramGallery: InstagramGallery,
+      //newProb : NewProb,
+     callToAction: CallToAction,
     newsletterSignup: NewsletterSignup,
     promoBanner: PromoBanner
    
