@@ -3,7 +3,7 @@
 </template>
 
 <script>
-//import BestSellers from './Section/BestSellers';
+import BestSellers from './Section/BestSellers';
 import FeaturedCategories from './Section/FeaturedCategories';
 import CallToAction from './Section/CallToAction';
 import NewsletterSignup from './Section/NewsletterSignup';
@@ -11,7 +11,7 @@ import PromoBanner from './Section/PromoBanner';
 //import NewProb from './Section/NewProb';
 export default {
   components: {
-    // bestSellers: BestSellers,
+     bestSellers: BestSellers,
      featuredCategories: FeaturedCategories,
       //newProb : NewProb,
      callToAction: CallToAction,
