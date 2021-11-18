@@ -2,6 +2,7 @@
    
 <template>
   <div id="home">
+     <!-- {{ content }}  -->
     <ContentPage v-if="content[0]" :page="content[0]" />
   </div>
 </template>
