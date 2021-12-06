@@ -8,6 +8,11 @@
 <div class="gridforcategory">
   <div v-for="(items,i) in section.items" :key="i.id" >
    {{items.title}}
+    <img
+        v-bind:src="items.image.url"
+        alt="Girl in a jacket"
+       
+      />
 
   </div>
 </div>
