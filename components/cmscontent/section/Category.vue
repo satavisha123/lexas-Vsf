@@ -80,6 +80,10 @@ export default {
   background-color: #f5f5f5;
   justify-content: center;
 }
+.for-Each-item:hover{
+   box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+}
 .item-Image {
   margin: 35px 13px 20px 13px;
 }
