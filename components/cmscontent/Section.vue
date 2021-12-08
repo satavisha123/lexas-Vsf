@@ -11,8 +11,10 @@
 //import NewsletterSignup from './Section/NewsletterSignup';
 //import PromoBanner from './Section/PromoBanner';
 //import NewProb from './Section/NewProb';
-import Category from './section/Category';
-import newBanner from './section/newBanner.vue'
+import FooterImages from "./Section/FooterImages";
+import SmallBanner from "./section/SmallBanner";
+import Category from "./section/Category";
+import newBanner from "./section/newBanner.vue";
 //import Homepage from './section/FeaturedCategories.vue'
 export default {
   components: {
@@ -23,8 +25,11 @@ export default {
     //newsletterSignup: NewsletterSignup,
     //promoBanner: PromoBanner
     //homepage:Homepage,
-    category:Category,
-    newbanner:newBanner
+ 
+    category: Category,
+    newbanner: newBanner,
+    smallBanner: SmallBanner,
+    footerImages: FooterImages,
    
   },
   props: {
