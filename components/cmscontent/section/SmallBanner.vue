@@ -3,18 +3,30 @@
   <div class="main-grid">
     <div v-for="(banner, i) in section.banner" :key="i.id" >
     <div v-if="i===0" :key="i.id" class="for-banner1">
+     
        <img v-bind:src="banner.image.url" alt="Girl in a
       jacket" class="banner-Image"  width: 310px;
   height: 268px;
  />
+ <div class="small-grid">
+  
    <div  class="title"> {{ banner.title }}</div>
+   <!-- <router-link v-bind:to="{{banner.link}}"> -->
+     
+    <button class="for-buttons"><span class="for-button-title">{{banner.button}}</span></button>
+   <!-- </router-link> -->
+ </div>
     </div>
     <div v-if="i===1" :key="i.id" class="for-banner2">
        <img v-bind:src="banner.image.url" alt="Girl in a
       jacket" class="banner-Image"  width: 310px;
   height: 268px;
  />
-   <div class="title"> {{ banner.title }}</div>
+ <div  class="small-grid">
+  
+   <div  class="title"> {{ banner.title }}</div>
+    <button class="for-buttons" ><span class="for-button-title">{{banner.button}}</span></button>
+ </div>
     </div>
     
     
@@ -48,6 +60,9 @@ export default {
       width: 1240px;    
     padding-top: 41px;
 }
+.small-grid{
+  display:grid;
+}
 
 .for-banner2{
   display: grid;
@@ -74,6 +89,29 @@ export default {
     letter-spacing: normal;
     text-align: left;
     color: #3c3c3c;
+}
+.for-buttons{
+    width: 152px;
+  height: 41px;
+  margin: 30px 31px 76px 67px;
+  border-radius: 6px;
+  background-color: #8959fa;
+  border: none;
+outline:none;
+}
+.for-button-title{
+     
+    width: 91px;
+    height: 20px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
 }
 
 .banner-Image{
