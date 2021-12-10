@@ -9,11 +9,11 @@
   height: 268px;
  />
  <div class="small-grid">
-  
+ 
    <div  class="title"> {{ banner.title }}</div>
-   <!-- <router-link v-bind:to="{{banner.link}}"> -->
-     
-    <button class="for-buttons"><span class="for-button-title">{{banner.button}}</span></button>
+   
+    <a v-bind:href="banner.link" class="for-buttons"><div class="for-button-title">{{banner.button}}</div></a>
+ 
    <!-- </router-link> -->
  </div>
     </div>
@@ -25,7 +25,7 @@
  <div  class="small-grid">
   
    <div  class="title"> {{ banner.title }}</div>
-    <button class="for-buttons" ><span class="for-button-title">{{banner.button}}</span></button>
+      <a v-bind:href="banner.link" class="for-buttons"><div class="for-button-title">{{banner.button}}</div></a>
  </div>
     </div>
     
@@ -100,9 +100,7 @@ export default {
 outline:none;
 }
 .for-button-title{
-     
-    width: 91px;
-    height: 20px;
+   height: 20px;
     font-family: Poppins;
     font-size: 14px;
     font-weight: 500;
@@ -112,8 +110,21 @@ outline:none;
     letter-spacing: normal;
     text-align: left;
     color: #fff;
+    padding: 10px 20px 2px 27px;
 }
-
+.a:link,a:visited{
+   width: 91px;
+  height: 20px;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
 .banner-Image{
   margin: 35px 13px 20px 30px;
 }
