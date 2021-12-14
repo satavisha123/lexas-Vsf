@@ -1,6 +1,6 @@
-<template><div>
-
-  <component :is="section.type" :section="section" />
+<template>
+  <div>
+    <component :is="section.type" :section="section" />
   </div>
 </template>
 
@@ -11,32 +11,34 @@
 //import NewsletterSignup from './Section/NewsletterSignup';
 //import PromoBanner from './Section/PromoBanner';
 //import NewProb from './Section/NewProb';
-import FooterImages from "./Section/FooterImages";
+//import FooterImages from "./Section/FooterImages";
 import SmallBanner from "./section/SmallBanner";
 import Category from "./section/Category";
 import newBanner from "./section/newBanner.vue";
+import Deals from "./section/Deals";
 //import Homepage from './section/FeaturedCategories.vue'
 export default {
   components: {
-     //bestSellers: BestSellers,
-     //featuredCategories: FeaturedCategories,
-      //newProb : NewProb,
-     //callToAction: CallToAction,
+    //bestSellers: BestSellers,
+    //featuredCategories: FeaturedCategories,
+    //newProb : NewProb,
+    //callToAction: CallToAction,
     //newsletterSignup: NewsletterSignup,
     //promoBanner: PromoBanner
     //homepage:Homepage,
- 
+
     category: Category,
     newbanner: newBanner,
     smallBanner: SmallBanner,
-    footerImages: FooterImages,
-   
+
+    totalDealsItem: Deals,
+    //footerImages: FooterImages,
   },
   props: {
     section: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
