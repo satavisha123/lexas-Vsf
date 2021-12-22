@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{section.type}}
     <component :is="section.type" :section="section" />
   </div>
 </template>
@@ -16,6 +17,7 @@ import SmallBanner from "./section/SmallBanner";
 import Category from "./section/Category";
 import newBanner from "./section/newBanner.vue";
 import Deals from "./section/Deals";
+import Footer from "./section/Footer"
 //import Homepage from './section/FeaturedCategories.vue'
 export default {
   components: {
@@ -32,6 +34,7 @@ export default {
     smallBanner: SmallBanner,
 
     totalDealsItem: Deals,
+    footer:Footer,
     //footerImages: FooterImages,
   },
   props: {
