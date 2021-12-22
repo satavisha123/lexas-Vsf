@@ -34,7 +34,7 @@ export default {
     smallBanner: SmallBanner,
 
     totalDealsItem: Deals,
-    footer:Footer,
+    footerNew:FooterNew,
     //footerImages: FooterImages,
   },
   props: {
